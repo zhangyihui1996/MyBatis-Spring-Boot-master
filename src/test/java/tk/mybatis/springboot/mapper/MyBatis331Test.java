@@ -57,8 +57,8 @@ public class MyBatis331Test {
 
     @Test
     @Rollback
-    public void testInsertList() {
-    	try{
+    public void testInsertList() throws Exception{
+
         List<City2> city2List = new ArrayList<City2>();
         city2List.add(new City2("石家庄", "河北"));
         city2List.add(new City2("邯郸", "河北"));
@@ -68,27 +68,24 @@ public class MyBatis331Test {
             logger.info(c2.toString());
             Assert.assertNotNull(c2.getId());
         }
-    	}catch (Exception e) {
-    		return;	
-    	}
+        
+        System.out.println("exception");
     }
 
     @Test
-    public void testSelectById(){
-    	try{
+    public void testSelectById() throws Exception{
+
         City2 city2 = mapper.selectByCityId(1);
         logger.info(city2.toString());
         Assert.assertNotNull(city2);
         Assert.assertNotNull(city2.getCityName());
         Assert.assertNotNull(city2.getCityState());
-    	}catch (Exception e) {
-    		return;	
-    	}
+        System.out.println("exception");
     }
 
     @Test
-    public void testSelectAll(){
-    	try{
+    public void testSelectAll() throws Exception{
+
         List<City2> city2List = mapper.selectAll();
         for(City2 c2 : city2List){
             logger.info(c2.toString());
@@ -96,9 +93,7 @@ public class MyBatis331Test {
             Assert.assertNotNull(c2.getCityName());
             Assert.assertNotNull(c2.getCityState());
         }
-	}catch (Exception e) {
-		return;	
-	}
+        System.out.println("exception");
     }
 
 }
