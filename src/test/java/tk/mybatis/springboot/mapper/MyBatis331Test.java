@@ -50,15 +50,15 @@ import java.util.List;
 @Transactional
 @SpringApplicationConfiguration(Application.class)
 public class MyBatis331Test {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    //private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
-    private MyBatis331Mapper mapper;
+   // @Autowired
+   // private MyBatis331Mapper mapper;
 
-    @Test
+/*    @Test
     @Rollback
-    public void testInsertList() throws Exception{
-/*
+   public void testInsertList() throws Exception{
+
         List<City2> city2List = new ArrayList<City2>();
         city2List.add(new City2("石家庄", "河北"));
         city2List.add(new City2("邯郸", "河北"));
@@ -68,9 +68,9 @@ public class MyBatis331Test {
             logger.info(c2.toString());
             Assert.assertNotNull(c2.getId());
         }
-        */
+     
         System.out.println("exception");
-    }
+    }*/
 
     @Test
     public void testSelectById() throws Exception{
