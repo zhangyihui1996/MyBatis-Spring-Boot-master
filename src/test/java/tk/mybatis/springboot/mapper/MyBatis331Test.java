@@ -45,10 +45,12 @@ import java.util.List;
  * @author liuzh
  * @since 2016-03-06 17:42
  */
+/*
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @Transactional
 @SpringApplicationConfiguration(Application.class)
+*/
 public class MyBatis331Test {
     //private Logger logger = LoggerFactory.getLogger(getClass());
 
