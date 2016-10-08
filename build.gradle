@@ -43,17 +43,14 @@ apply plugin: 'checkstyle'
 repositories {  
   mavenCentral()  
 }  
-task checkstyle(type: Checkstyle) {  
-   ignoreFailures = true  
-    config = files("config/checkstyle/checkstyle.xml")  
-    source = fileTree('build/classes/debug/')  
-    classpath = files()  
-    reports {  
-    xml {  
-      destination "build/checkstyle-result.xml"  
-    }  
-  }  
-} 
+task checkstyle(type: Checkstyle) {
+     source 'src'
+     include '**/*.java'
+     exclude '**/R.java'
+     configFile new File(rootDir, "checkstyle.xml")
+     // empty classpath
+     classpath = files()
+  }
 
 apply plugin: 'findbugs'
 repositories {  
