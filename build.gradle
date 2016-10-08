@@ -41,24 +41,27 @@ exclude(module: 'commons-logging')
 
 apply plugin: 'checkstyle'
 task checkstyle(type: Checkstyle){
-   //configFile = file("google_android_checks.xml")
     source = fileTree('src')
     ignoreFailures = true
     classpath = files()
 }
 
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
 
 apply plugin: 'findbugs'
-task findbugs(type: FindBugs, dependsOn: 'compileDebugSources') {
-    classes = fileTree("build/intermediates/classes/debug/")
-    source = fileTree('src')
-    classpath = files()
-    ignoreFailures = true
-    //reportsDir = file("$project.buildDir/outputs/")
-    reportLevel = "medium"
-    effort = "max"
+findbugs{
+    ignoreFailures=true
+    findbugsTest.enabled=false
+}
+
+tasks.withType(FindBugs) {
     reports {
-        xml.enabled = true
-        html.enabled = false
+        xml.enabled = false
+        html.enabled = true
     }
 }
