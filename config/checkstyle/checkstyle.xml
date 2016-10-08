@@ -3,10 +3,8 @@
    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"  
     "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">  
 <module name="Checker">  
-<modulename modulename="FileTabCharacter"/>  
-  <module name="BaseEntity">  
+  <module name="BaseEntity"/>  
   <module name="City"/>
   <module name="Country"/>  
   <module name="UserInfo"/>    
- </module>  
 </module>  
