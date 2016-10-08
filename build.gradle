@@ -40,11 +40,20 @@ exclude(module: 'commons-logging')
 }
 
 apply plugin: 'checkstyle'
-task checkstyle(type: Checkstyle){
-    source = fileTree('src')
-    ignoreFailures = true
-    classpath = files()
-}
+repositories {  
+  mavenCentral()  
+}  
+task checkstyle(type: Checkstyle) {  
+   ignoreFailures = true  
+    //config = files("build/config/checkstyle/checkstyle.xml")  
+    source = fileTree('build/classes/debug/')  
+    classpath = files()  
+    reports {  
+    xml {  
+      destination "build/checkstyle-result.xml"  
+    }  
+  }  
+} 
 
 apply plugin: 'findbugs'
 task findbugs(type: FindBugs) {
