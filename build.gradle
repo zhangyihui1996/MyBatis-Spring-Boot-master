@@ -45,7 +45,7 @@ repositories {
 }  
 task checkstyle(type: Checkstyle) {  
    ignoreFailures = true  
-    //config = files("build/config/checkstyle/checkstyle.xml")  
+    config = files("config/checkstyle/checkstyle.xml")  
     source = fileTree('build/classes/debug/')  
     classpath = files()  
     reports {  
