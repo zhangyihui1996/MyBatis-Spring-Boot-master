@@ -56,16 +56,21 @@ task checkstyle(type: Checkstyle) {
 } 
 
 apply plugin: 'findbugs'
-task findbugs(type: FindBugs) {
+repositories {  
+  mavenCentral()  
+}  
+  
+task findbugs(type: FindBugs) {  
+   //toolVersion = "2.0.1"  
+    ignoreFailures = true  
+    effort = "max"  
+    reportLevel = "medium"  
     classes = fileTree("build/classes/")
     source = fileTree('src')
-    classpath = files()
-    ignoreFailures = true
-    //reportsDir = file("$project.buildDir/outputs/")
-    reportLevel = "medium"
-    effort = "max"
-    reports {
-        xml.enabled = true
-        html.enabled = false
-    }
-}
+    classpath = files()  
+    reports {  
+    xml {  
+      destination "build/findbugs.xml"  
+    }  
+  }  
+}  
