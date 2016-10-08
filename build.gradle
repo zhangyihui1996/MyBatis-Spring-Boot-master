@@ -38,3 +38,20 @@ exclude(module: 'commons-logging')
     compile group: 'com.github.pagehelper', name: 'pagehelper', version:'4.1.1'
     compile group: 'tk.mybatis', name: 'mapper', version:'3.3.6'
 }
+
+apply plugin: "checkstyle"
+
+repositories {
+  mavenCentral()
+}
+task checkstyle(type: Checkstyle) {
+   ignoreFailures = true
+	//config = files("build/config/checkstyle/checkstyle.xml")
+	source = fileTree('build/classes/')
+	classpath = files()
+	reports {
+    xml {
+      destination "build/checkstyle-result.xml"
+    }
+  }
+}
