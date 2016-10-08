@@ -38,3 +38,27 @@ exclude(module: 'commons-logging')
     compile group: 'com.github.pagehelper', name: 'pagehelper', version:'4.1.1'
     compile group: 'tk.mybatis', name: 'mapper', version:'3.3.6'
 }
+
+apply plugin: 'checkstyle'
+task checkstyle(type: Checkstyle){
+   //configFile = file("google_android_checks.xml")
+    source = fileTree('src')
+    ignoreFailures = true
+    classpath = files()
+}
+
+
+apply plugin: 'findbugs'
+task findbugs(type: FindBugs, dependsOn: 'compileDebugSources') {
+    classes = fileTree("build/intermediates/classes/debug/")
+    source = fileTree('src')
+    classpath = files()
+    ignoreFailures = true
+    //reportsDir = file("$project.buildDir/outputs/")
+    reportLevel = "medium"
+    effort = "max"
+    reports {
+        xml.enabled = true
+        html.enabled = false
+    }
+}
