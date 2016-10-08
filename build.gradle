@@ -50,7 +50,12 @@ task checkstyle(type: Checkstyle) {
      configFile new File(rootDir, "config/checkstyle/checkstyle.xml")
      // empty classpath
      classpath = files()
-  }
+     reports {  
+     xml {  
+       destination "build/reports/checkstyle/checkstyle.xml"  
+     }  
+   }  
+ }
 
 apply plugin: 'findbugs'
 repositories {  
