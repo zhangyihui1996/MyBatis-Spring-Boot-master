@@ -81,9 +81,8 @@ jacoco{
     toolVersion = "0.6.2.201302030002"
     reportsDir = file("$buildDir/customJacocoReportDir")
 }   
-jacocoTestReport {
-    reports
-       jacoco
-       destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
-       classDumpFile = file("$buildDir/jacoco/classpathdumps")
+test {
+    jacoco
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpFile = file("$buildDir/jacoco/classpathdumps")
     }
